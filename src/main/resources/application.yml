@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  profiles:
+    active: dev
+    include: secret
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  threads:
+    virtual:
+      enabled: true
+logging:
+  level:
+    root: INFO
+
