@@ -14,3 +14,7 @@ logging:
   level:
     root: INFO
 
+jwt:
+  secret: 3ec6.!wUFdyPeQoHq~KhG7=F/oS+z`WO_ihDKO;rR[,vW%hTatqs=AX`QCK.QD2
+  validity-in-milliseconds: 10800000
+
