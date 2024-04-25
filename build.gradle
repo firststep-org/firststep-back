@@ -37,7 +37,11 @@ dependencies {
 	testRuntimeOnly 'com.h2database:h2'
 
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
+	// JWT 토큰을 위한 JJWT 라이브러리
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.5'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	// Validation을 위한 라이브러리
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.5'
 
 }
 
