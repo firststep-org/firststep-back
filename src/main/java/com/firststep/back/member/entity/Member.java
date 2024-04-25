@@ -6,47 +6,39 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@Table
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Member extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
-    @NotBlank
-    @Email
+    @Column
     private String memberEmail;
-    @Column(nullable = false)
-    @NotBlank
+    @Column
     private String password;
-    @Column(unique = true, nullable = false)
-    @NotNull
+    @Column
     private String memberNickname;
     @Column
+    @Builder.Default
     private String memberPictureUrl = null;
     @Column
     @NotBlank
     private String loginType; // TODO : Enum화
     @Column
+    @Builder.Default
     private int memberLevel = 0; // TODO : Enum화??
     @Column
+    @Builder.Default
     private int memberStatus = 0; // TODO : Enum화
-    @Builder
-    public Member(String memberEmail, String password, String memberNickname, String loginType) {
-        this.memberEmail = memberEmail;
-        this.password = password;
-        this.memberNickname = memberNickname;
-        this.loginType = loginType;
-    }
 }
