@@ -2,7 +2,6 @@ package com.firststep.back.member.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.InstanceOfAssertFactories.throwable;
 
 import com.firststep.back.member.entity.Member;
 import jakarta.validation.ConstraintViolationException;
@@ -145,5 +144,35 @@ public class MemberRepositoryTest {
         assertThat(byMemberStatus).isNotNull();
         assertThat(byMemberStatus.size()).isEqualTo(1);
         assertThat(byMemberStatus.get(0).getMemberStatus()).isEqualTo(memberStatus);
+    }
+
+    @Test
+    public void existsByMemberEmailAndMemberStatus() {
+        String email = "email@test.com";
+        int memberStatus = 0;
+        boolean exists = memberRepository.existsByMemberEmailAndMemberStatus(email, memberStatus);
+        assertThat(exists).isTrue();
+    }
+    @Test
+    public void existsByMemberEmailAndMemberStatus_isFalse() {
+        String email = "email@test.com";
+        int memberStatus = 1;
+        boolean exists = memberRepository.existsByMemberEmailAndMemberStatus(email, memberStatus);
+        assertThat(exists).isFalse();
+    }
+
+    @Test
+    public void existsByMemberNicknameAndMemberStatus() {
+        String nickname = "test";
+        int memberStatus = 0;
+        boolean exists = memberRepository.existsByMemberNicknameAndMemberStatus(nickname, memberStatus);
+        assertThat(exists).isTrue();
+    }
+    @Test
+    public void existsByMemberNicknameAndMemberStatus_isFalse() {
+        String nickname = "test";
+        int memberStatus = 1;
+        boolean exists = memberRepository.existsByMemberNicknameAndMemberStatus(nickname, memberStatus);
+        assertThat(exists).isFalse();
     }
 }
