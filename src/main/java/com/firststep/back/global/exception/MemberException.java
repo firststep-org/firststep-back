@@ -1,14 +1,14 @@
 package com.firststep.back.global.exception;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
 public class MemberException extends RuntimeException {
-    private final String message;
+    private ExceptionResult exceptionResult;
 
-    public MemberException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
+    public MemberException(ExceptionResult exceptionResult) {
+        this.exceptionResult = exceptionResult;
     }
 }

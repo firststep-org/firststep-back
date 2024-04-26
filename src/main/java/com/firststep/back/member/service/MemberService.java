@@ -1,8 +1,9 @@
 package com.firststep.back.member.service;
 
 import com.firststep.back.member.dto.MemberResponseDto;
+import com.firststep.back.member.form.AddMemberForm;
 
 public interface MemberService {
 
-    MemberResponseDto addMember(String email, String password, String nickname, String loginType);
+    MemberResponseDto addMember(AddMemberForm addMemberForm);
 }
