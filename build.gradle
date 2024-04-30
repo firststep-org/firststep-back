@@ -36,6 +36,9 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'com.h2database:h2'
 
+	// GsonLibrary
+	implementation 'com.google.code.gson:gson:2.10.1'
+
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt-api
 	// JWT 토큰을 위한 JJWT 라이브러리
 	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.5'

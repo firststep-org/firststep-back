@@ -7,6 +7,8 @@ import com.firststep.back.member.entity.Member;
 import com.firststep.back.member.form.AddMemberForm;
 import com.firststep.back.member.repository.MemberRepository;
 import com.firststep.back.member.service.MemberService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,5 +39,14 @@ public class MemberServiceImpl implements MemberService {
                 .build();
         Member save = memberRepository.save(member);
         return MemberResponseDto.toResponseDto(save);
+    }
+
+    @Override
+    public MemberResponseDto findMemberByEmail(@Valid String memberEmail) {
+        Member member = memberRepository.findByMemberEmailAndMemberStatus(memberEmail, 0);
+        if (member == null) {
+            throw new MemberException(ExceptionResult.MEMBER_NOT_FOUND);
+        }
+        return MemberResponseDto.toResponseDto(member);
     }
 }

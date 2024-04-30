@@ -108,4 +108,25 @@ public class MemberServiceTest {
                 () -> memberService.addMember(addMemberForm1)).isInstanceOf(
                 MemberException.class);
     }
+
+    @Test
+    public void findUserByEmail_SUCCESS() {
+        // given
+        String memberEmail = "test@test.test";
+        Member member = Member.builder()
+                .id(0L)
+                .memberEmail(memberEmail)
+                .password("testPassword")
+                .memberNickname("testNickname")
+                .loginType("testLoginType")
+                .build();
+
+        // when
+        when(memberRepository.findByMemberEmailAndMemberStatus(memberEmail, 0)).thenReturn(member);
+        MemberResponseDto memberResponseDto = memberService.findMemberByEmail(memberEmail);
+
+        // then
+        assertThat(memberResponseDto).isNotNull();
+        assertThat(memberResponseDto.memberEmail()).isEqualTo(memberEmail);
+    }
 }

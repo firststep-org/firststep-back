@@ -6,4 +6,6 @@ import com.firststep.back.member.form.AddMemberForm;
 public interface MemberService {
 
     MemberResponseDto addMember(AddMemberForm addMemberForm);
+
+    MemberResponseDto findMemberByEmail(String memberEmail);
 }

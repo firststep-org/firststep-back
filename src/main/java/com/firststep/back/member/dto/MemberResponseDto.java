@@ -3,7 +3,9 @@ package com.firststep.back.member.dto;
 import com.firststep.back.member.entity.Member;
 import lombok.Builder;
 
+
 @Builder
+
 public record MemberResponseDto(
         long memberId,
         String memberEmail,
